@@ -1,0 +1,80 @@
+
+Git Rebase - Squash
+# If there are uncommitted changes, stash them.
+$ git stash
+
+( git update-index --skip-worktree )
+# Checkout desired branch to rebase (master), and fetch the latest changes.
+$ git checkout master
+$ git pull origin master
+ 
+# Switch back to the feature branch.
+$ git checkout my-feature
+
+# Merge the desired branch (master) into the feature branch by rebasing.
+$ git rebase -i master
+	Modify commits - change all except 1 pick to squash, in next step - remove unwanted commit messages
+ 
+# After the rebase operation succeeds and any conflicts are resolved, the branch must be force-pushed to the origin.
+# Why? Because rebase rewrites the history in the feature branch.
+# It's import to use --force-with-lease option here. If someone else committed to the repo right before you force pushed, they would lose their changes.
+$ git push --force-with-lease origin my-feature
+ 
+# Remember to pop stashed changes, if applicable!
+$ git stash pop
+
+# Empty commit to trigger build
+$ git commit --allow-empty -m "Trigger Build"
+
+---------------------------------------------------------------------------------------------------
+
+Git Cherry Pick to release branch Process:
+1. Checkout master branch (clone repo if no local copy exists)
+2. $ git pull origin master (Pull latest master code)
+3. $ git checkout release/22.12 (replace release/22.08 with the required release branch)
+4. $ git checkout -b reschand/VA-5604 (replace reschand/VA-5604 with any branch name you need)
+5. $ git cherry-pick 9955007edb3 (replace 9955007edb3 with the desired commit number to cherry pick that commit)
+6. $ git push origin reschand/VA-5604
+7. Create PR
+
+git cherry-pick <commit hash>
+git push 
+
+---------------------------------------------------------------------------------------------------
+
+Revive branch
+git checkout master
+git branch -D reschand/VA-5346
+git pull (force updated custom branch will be revived)
+git checkout reschand/VA-5346
+
+Create new branch
+git checkout -b reschand/VA-5346
+git push -u origin reschand/VA-5346
+OR
+git branch reschand/VA-5346
+git checkout reschand/VA-5346
+git push -u origin reschand/VA-5346
+
+Delete branch
+git branch -D reschand/VA-5346
+git branch -d `git branch --list '3.2.*'`
+
+Enable git pull for long paths
+git config --system core.longpaths true
+git config --global http.postBuffer 157286400
+
+git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
+git config --global alias.graph "log --all --decorate --oneline --graph"
+---------------------------------------------------------------------------------------------------
+
+git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+
+git fetch origin <remote branch>
+git branch <remote branch> FETCH_HEAD
+git checkout <remote branch>
+---------------------------------------------------------------------------------------------------
+
+
+
+

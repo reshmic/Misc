@@ -1,0 +1,14 @@
+
+List npm registry config: npm config list
+List npm global packages: npm list -g --depth=0
+
+npm cache clean --force
+npm config list [-l] [--json]
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+

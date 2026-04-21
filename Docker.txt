@@ -1,0 +1,39 @@
+Docker Commands:
+
+docker --version
+docker info
+docker ps - list the running containers
+docker ps -a - show all the running and exited containers
+
+docker pull <image name>
+docker run -it -d <image name>
+docker stop <container id>
+docker kill <container id>
+docker restart <container id>
+docker rm <container id> - delete a stopped container
+docker exec -it <container id> bash - access the running container
+
+docker commit <container id> <username/image name> - creates a new image of an edited container on the local system
+docker login --username <username> -p <password> - login to the docker hub repository
+docker logout
+docker push <username/image name> - push an image to the docker hub repository
+
+docker images - lists all the locally stored docker images
+docker rmi <image-id> - delete an image from local storage
+docker build <path to docker file> - build an image from a specified docker file
+
+docker network ls
+sudo docker cp <container id:file to be copied> <local path>     Eg: sudo docker cp 09ca6feb6efc:/usr/local/apache2/logs/httpd.pid /home/geekflare/
+docker logs <container id>
+docker search <image name> - search for image in docker hub
+
+sudo service docker start - start docker service
+sudo service docker stop
+---------------------------------------------------------------------------------------------------
+
+docker exec -ti selenoid bash
+docker exec -ti selenoid sh
+
+
+
+
