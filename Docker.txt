@@ -33,7 +33,11 @@ sudo service docker stop
 
 docker exec -ti selenoid bash
 docker exec -ti selenoid sh
+---------------------------------------------------------------------------------------------------
 
-
-
-
+get kube.config from env devops portal -> Cluster Access
+export KUBECONFIG=/Users/reschand/IAFusion/KubeConfig/fa-cx-service.phx.kube.config
+export OCI_CLI_AUTH=security_token
+oci session validate (us-phoenix-1)
+kubectl get pods -n cxservice
+kubectl get pod fa.cx.service.core--6fc6tkpbf -n cxservice -o yaml > 2510_runtime.txt
