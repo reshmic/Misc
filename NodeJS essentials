@@ -1,0 +1,59 @@
+Node JS
+-------
+After installation, check these:
+npm --version
+node --version
+
+Init NodeJs project
+npm init -y
+
+Run:
+node myFile.js
+
+Typescript:
+-----------
+npm install -g typescript
+npm install --save-dev @types/node
+
+or
+
+npm install --save-dev typescript @types/node
+npm install --save-dev ts-node tsx (runtimes)
+
+Init Typescript project
+npx tsc --init
+
+Run:
+npx tsc myFile.ts (does not consider tsconfig)
+node myFile.js
+
+or
+
+npx tsx src/index.ts or npx ts-node filename.ts
+
+Playwright
+----------
+npm init playwright@latest
+npx playwright --version
+
+Update Playwright and download new browser binaries and their dependencies:
+npm install -D @playwright/test@latest
+npx playwright install --with-deps
+
+npx playwright test
+npx playwright test --headed
+npx playwright test --project chromium
+npx playwright test --ui
+npx playwright test --debug
+To debug a specific test from the line number where the test(.. is defined, add a colon followed by the line number at the end of the test file name, followed by the --debug flag.
+npx playwright test example.spec.ts:10 --debug
+npx playwright show-report
+npx playwright show-report name-of-my-extracted-playwright-report (CI excutions)
+npx playwright test --trace on // for local executions see trace in report
+npx playwright show-trace path/to/trace.zip
+npx playwright show-trace https://example.com/trace.zip (CI excutions)
+
+
+npx playwright codegen demo.playwright.dev/todomvc
+
+
