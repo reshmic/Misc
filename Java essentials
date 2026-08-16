@@ -1,0 +1,5 @@
+Maven lifecycle - default, clean, site. These has phases.
+Default lifecycle - validate, compile, test, package, verify, install, deploy
+
+Maven plugins types - build n report
+Plugins have goals, binding to specific phases to lifecycle, and configfigurations
